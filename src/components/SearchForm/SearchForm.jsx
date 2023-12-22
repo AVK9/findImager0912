@@ -8,7 +8,7 @@ export class SearchForm extends Component {
     value: '',
   };
   handleInputChange = e => {
-    this.setState({ value: e.currentTarget.value.toLowerCase().trim() });
+    this.setState({ value: e.currentTarget.value });
   };
   handleFormSummit = e => {
     e.preventDefault();
