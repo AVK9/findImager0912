@@ -20,16 +20,14 @@ export class Todos extends Component {
       return alert(`${data} is already in contacts.`);
     } else {
       this.setState(prev => prev.todos.push(newTodo));
-      localStorage.setItem('todosSafe', JSON.stringify(this.state.todos));
+      // localStorage.setItem('todosSafe', JSON.stringify(this.state.todos));
       console.log(this.state.todos);
     }
   };
   componentDidMount() {
-    let todosSafe = localStorage.getItem('todosSafe');
+    let todosSafe = JSON.parse(localStorage.getItem('todosSafe'));
     if (todosSafe) {
-      this.setState({ contacts: JSON.parse(todosSafe) });
-    } else {
-      localStorage.setItem('todosSafe', JSON.stringify(this.state.todos));
+      this.setState(() => ({ todos: todosSafe }));
     }
   }
   componentDidUpdate(prevState) {
